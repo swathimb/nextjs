@@ -22,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-gray-200 font-mono">
-        <Header/>
+        {/* Header is Standard React Component */}
+        <Header />
+        {/* children is the content from page.tsx - Home() */}
         {children}
       </body>
     </html>

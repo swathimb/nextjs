@@ -7,7 +7,7 @@ export async function GET() {
     const db = client.db(process.env.MONGODB_DB);
 
     const collections = await db.listCollections().toArray();
-    return NextResponse.json({ collections });
+    return NextResponse.json({ collections, msg: 'Connected Successfully' });
   } catch (e) {
     return NextResponse.json({ errMsg: "Connection failed", err: e }, { status: 500 });
   }

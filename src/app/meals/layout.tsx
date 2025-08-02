@@ -1,9 +1,10 @@
-export default function MealsLayout({children}: {
+export default function MealsLayout({ children }: {
     children: React.ReactNode;
-  }) {
-    return(
+}) {
+    return (
         <>
             {/* <p>Meals Layout</p> */}
+            {/* there children content is MealsPage */}
             {children}
         </>
     )

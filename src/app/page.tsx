@@ -2,11 +2,12 @@ import ImageSlider from "@/components/images/image-slider";
 import Link from "next/link";
 
 export default function Home() {
+  console.log('From Server')
   return (
     <>
       <header className="flex mr-4 ml-4 pr-4 pl-4">
         <div className="p-4">
-          <ImageSlider/>
+          <ImageSlider />
         </div>
         <div className="p-4">
           <div>

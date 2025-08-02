@@ -1,28 +1,16 @@
-'use client'
-
 import MealsGrid from "@/components/meals/meals-grid";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense } from "react"; //only works if its a Server component/ React.lazy component
 import axios from "axios";
 
-export default function Meals() {
-    const [meals, setMeals] = useState<[]>([])
+async function Meals() {
+    const meals = await axios.get("http://localhost:3000/api/meals");
+    return <MealsGrid meals={meals.data} />
+}
 
-    const fetchMeals = async () => {
-        try {
-          const response = await axios.get("/api/meals");
-          console.log('-----', response)
-          setMeals(response.data)
-        } catch (err) {
-          console.error("Error fetching meals:", err);
-        }
-    };
-      
-    useEffect(() => {
-        fetchMeals();
-    },[])
+export default function MealsPage() {
 
-    return(
+    return (
         <>
             <header className="m-10 p-10 flex flex-col gap-5">
                 <h1 className="text-5xl font-semibold w-[60%]">Delicious meals, created{''} by you</h1>
@@ -32,7 +20,9 @@ export default function Meals() {
                 </span>
             </header>
             <main>
-                <MealsGrid meals={meals} />
+                <Suspense fallback={<span>Meals loading....</span>}>
+                    <Meals />
+                </Suspense>
             </main>
         </>
     )

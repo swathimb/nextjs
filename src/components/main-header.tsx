@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 
 import Link from "next/link";
 import logoImage from '../../public/assets/logo.png'
@@ -6,7 +6,7 @@ import Image from "next/image"
 import NavLink from "./nav-link";
 
 export default function Header() {
-
+    console.log('From React component')
     return (
         <>
             <div className="flex items-center justify-center gap-300">
